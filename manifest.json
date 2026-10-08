@@ -1,0 +1,15 @@
+{
+  "name": "Meu Moto G84",
+  "short_name": "Moto G84",
+  "description": "Guia de funções e ajustes de desempenho do Moto G84",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F2F9E",
+  "theme_color": "#1F5BFF",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
