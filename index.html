@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meu Moto G84</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F3F5; --surface:#FFFFFF; --surface2:#EFE8EC; --text:#1E1A1F; --muted:#6B6169; --line:#E0D6DB;
+  --accent:#B3264A; --accent-ink:#FFFFFF; --blue:#2F5FC4; --amber:#8A5700;
+  --font:"Sora",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141216; --surface:#1E1B21; --surface2:#27232A; --text:#F3EEF1; --muted:#A79DA5; --line:#332E36;
+    --accent:#E04A70; --accent-ink:#1A0A10; --blue:#8DB0F7; --amber:#F0BC5A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141216; --surface:#1E1B21; --surface2:#27232A; --text:#F3EEF1; --muted:#A79DA5; --line:#332E36;
+  --accent:#E04A70; --accent-ink:#1A0A10; --blue:#8DB0F7; --amber:#F0BC5A;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.wrap{max-width:640px;margin:0 auto;padding:16px 16px 96px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.top h1{font-size:1.05rem;font-weight:600;margin:0;color:var(--muted)}
+.theme{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:.85rem}
+
+/* Hero */
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 20px;display:flex;align-items:center;gap:18px;margin:8px 0 20px}
+.hero .txt{flex:1;min-width:0}
+.hero h2{font-size:2rem;line-height:1.1;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--muted);font-size:.95rem}
+.ring{position:relative;width:92px;height:92px;flex:none}
+.ring svg{width:92px;height:92px;transform:rotate(-90deg)}
+.ring .bg{stroke:var(--surface2)}
+.ring .fg{stroke:var(--accent);transition:stroke-dashoffset .5s ease}
+.ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:1.15rem;line-height:1.1}
+.ring .num small{font-weight:400;font-size:.68rem;color:var(--muted)}
+.cta{display:inline-block;margin-top:12px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:10px 16px;font-weight:600;font-size:.9rem}
+
+h3.sec{font-size:1.05rem;margin:26px 0 10px;font-weight:700}
+.note{background:var(--surface2);border-radius:14px;padding:12px 14px;font-size:.88rem;color:var(--muted);margin:0 0 16px}
+
+/* Ficha */
+.specs{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.specs div.row{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:12px 16px;border-top:1px solid var(--line)}
+.specs div.row:first-child{border-top:0}
+.specs dt{color:var(--muted);font-size:.88rem}
+.specs dd{margin:0;font-size:.95rem}
+
+/* Funções */
+.search{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:14px;padding:12px 14px;font:inherit;margin-bottom:6px}
+.count{font-size:.85rem;color:var(--muted);margin:0 0 4px}
+.cat{font-size:1rem;font-weight:700;margin:22px 0 8px}
+details.f{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:8px}
+details.f summary{list-style:none;padding:13px 16px;font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
+details.f summary::-webkit-details-marker{display:none}
+details.f summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1;transition:transform .2s}
+details.f[open] summary::after{transform:rotate(45deg)}
+details.f .body{padding:0 16px 14px;font-size:.92rem}
+details.f .body p{margin:0 0 8px;color:var(--muted)}
+.where{display:block;background:var(--surface2);border-radius:10px;padding:8px 10px;font-size:.84rem}
+.empty{color:var(--muted);text-align:center;padding:28px 0}
+
+/* Desempenho */
+.bar{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;width:0;transition:width .4s ease}
+.barlbl{font-size:.88rem;color:var(--muted);margin:0 0 6px}
+.step{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+.chk{flex:none;width:28px;height:28px;border-radius:9px;border:2px solid var(--muted);background:transparent;display:flex;align-items:center;justify-content:center;padding:0;margin-top:2px}
+.chk svg{width:16px;height:16px;opacity:0}
+.step.done .chk{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.step.done .chk svg{opacity:1}
+.step.done h4{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.step .c{flex:1;min-width:0}
+.step h4{margin:0 0 4px;font-size:.98rem;font-weight:600}
+.step p{margin:0 0 8px;font-size:.9rem;color:var(--muted)}
+.chip{display:inline-block;border-radius:99px;padding:2px 10px;font-size:.78rem;font-weight:600;margin-left:6px;vertical-align:middle;border:1px solid currentColor}
+.chip.alto{color:var(--accent)} .chip.medio{color:var(--amber)} .chip.baixo{color:var(--blue)}
+.reset{display:block;margin:20px auto 0;background:transparent;border:1px solid var(--line);border-radius:12px;padding:10px 16px;color:var(--muted);font-size:.88rem}
+.rot{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.rot h4{margin:0 0 4px;font-size:.98rem}
+.rot p{margin:0;font-size:.9rem;color:var(--muted)}
+
+/* Tabs */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav.tabs .in{display:flex;width:100%;max-width:640px}
+nav.tabs button{flex:1;background:none;border:0;padding:10px 4px 9px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.78rem;color:var(--muted)}
+nav.tabs button svg{width:22px;height:22px}
+nav.tabs button[aria-selected="true"]{color:var(--accent);font-weight:600}
+section[hidden]{display:none}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Meu Moto G84</h1>
+    <button class="theme" id="themeBtn" type="button">Tema</button>
+  </div>
+
+  <!-- FICHA -->
+  <section id="tab-ficha">
+    <div class="hero">
+      <div class="txt">
+        <h2>Moto G84 5G</h2>
+        <p>Seu guia de funções e ajustes para o celular render o máximo.</p>
+        <button class="cta" type="button" data-go="desempenho">Ver ajustes</button>
+      </div>
+      <div class="ring" aria-label="Progresso dos ajustes">
+        <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34" fill="none" stroke-width="8"/><circle class="fg" id="ringFg" cx="40" cy="40" r="34" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="213.63" stroke-dashoffset="213.63"/></svg>
+        <div class="num"><span id="ringNum">0</span><small id="ringOf">de 0</small></div>
+      </div>
+    </div>
+    <p class="note">Nomes de menus e caminhos podem mudar um pouco conforme a versão do Android e do app Moto. Se não achar algo, procure o nome na busca das Configurações.</p>
+    <h3 class="sec">Ficha técnica</h3>
+    <dl class="specs" id="specs"></dl>
+  </section>
+
+  <!-- FUNÇÕES -->
+  <section id="tab-funcoes" hidden>
+    <h3 class="sec" style="margin-top:8px">Todas as funções</h3>
+    <input class="search" id="q" type="search" placeholder="Buscar função (ex.: lanterna, 5G, câmera)" aria-label="Buscar função">
+    <p class="count" id="count"></p>
+    <div id="feat"></div>
+  </section>
+
+  <!-- DESEMPENHO -->
+  <section id="tab-desempenho" hidden>
+    <h3 class="sec" style="margin-top:8px">Ajustes para melhor desempenho</h3>
+    <p class="note">Siga na ordem e marque cada passo quando terminar. Seu progresso fica salvo neste aparelho.</p>
+    <div class="bar"><i id="barFill"></i></div>
+    <p class="barlbl" id="barLbl"></p>
+    <div id="steps"></div>
+    <button class="reset" id="resetBtn" type="button">Desmarcar tudo</button>
+
+    <h3 class="sec">Rotina de manutenção</h3>
+    <div id="rotina"></div>
+
+    <h3 class="sec">O que evitar</h3>
+    <div id="evitar"></div>
+  </section>
+</div>
+
+<nav class="tabs" aria-label="Seções">
+  <div class="in" role="tablist">
+    <button type="button" role="tab" data-tab="ficha" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>Ficha</button>
+    <button type="button" role="tab" data-tab="funcoes" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Funções</button>
+    <button type="button" role="tab" data-tab="desempenho" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Desempenho</button>
+  </div>
+</nav>
+
+<script>
+/* ---------- Dados ---------- */
+var SPECS = [
+  ["Lançamento","Setembro de 2023"],
+  ["Sistema","Android 13 de fábrica, com Android 14 garantido pela Motorola"],
+  ["Atualizações","Promessa de 2 atualizações de sistema e 4 anos de segurança"],
+  ["Tela","pOLED de 6,55 polegadas, Full HD+ (2400 x 1080), 120 Hz"],
+  ["Brilho e toque","Pico de cerca de 1.300 nits e amostragem de toque de 240 Hz"],
+  ["Processador","Snapdragon 695 5G (6 nm), GPU Adreno 619"],
+  ["Memória","8 GB ou 12 GB de RAM, conforme a versão, e 256 GB de armazenamento"],
+  ["Câmera traseira","50 MP (f/1.9, estabilização óptica) + 8 MP ultra-wide de 120°"],
+  ["Câmera frontal","16 MP"],
+  ["Bateria","5.000 mAh com carregamento rápido de 30 W a 33 W, conforme o mercado"],
+  ["Conexões","5G, dois chips, NFC, Bluetooth 5.1, USB-C e entrada P2 para fone"],
+  ["Design","Repelente à água e acabamento em couro vegano, conforme a cor"]
+];
+
+var FEATURES = [
+ {cat:"Tela", items:[
+  {n:"Tela de 120 Hz", d:"Rolagem e animações bem mais fluidas. Em 60 Hz a bateria rende um pouco mais, mas o aparelho parece mais lento.", w:"Configurações > Tela > Taxa de atualização"},
+  {n:"Brilho alto e automático", d:"O pico de cerca de 1.300 nits ajuda a ler ao sol. O brilho adaptável ajusta sozinho conforme a luz do ambiente.", w:"Configurações > Tela > Brilho adaptável"},
+  {n:"Tema escuro", d:"Na tela pOLED, pixels pretos ficam apagados. Isso ajuda a bateria e cansa menos a vista à noite.", w:"Configurações > Tela > Tema escuro"},
+  {n:"Luz noturna", d:"Deixa as cores mais quentes à noite para reduzir o cansaço visual. Pode ser agendada.", w:"Configurações > Tela > Luz noturna"},
+  {n:"Cores da tela", d:"Permite escolher um perfil de cores mais natural ou mais saturado.", w:"Configurações > Tela > Cores"},
+  {n:"Tamanho da fonte e da tela", d:"Aumenta ou diminui letras e elementos para enxergar melhor.", w:"Configurações > Tela > Tamanho da fonte / Tamanho de exibição"},
+  {n:"Atenção na tela e Peek", d:"A tela fica acesa enquanto você olha para ela, e a tela bloqueada mostra hora e avisos sem acender tudo.", w:"App Moto > Exibição"}
+ ]},
+ {cat:"Gestos Moto", items:[
+  {n:"Lanterna rápida", d:"Dois golpes de caratê no ar com o celular na mão ligam e desligam a lanterna.", w:"App Moto > Gestos"},
+  {n:"Câmera rápida", d:"Girar o pulso duas vezes abre a câmera, mesmo com a tela apagada.", w:"App Moto > Gestos"},
+  {n:"Captura de tela com três dedos", d:"Toque e segure a tela com três dedos para tirar um print sem apertar botões.", w:"App Moto > Gestos"},
+  {n:"Tela dividida", d:"Usa dois apps ao mesmo tempo, um em cima do outro.", w:"App Moto > Gestos"},
+  {n:"Pegar para silenciar", d:"Ao pegar o celular que está tocando, o toque diminui.", w:"App Moto > Gestos"},
+  {n:"Virar para não perturbar", d:"Virar o celular com a tela para baixo liga o Não perturbe.", w:"App Moto > Gestos"}
+ ]},
+ {cat:"Câmera", items:[
+  {n:"Câmera principal de 50 MP", d:"Estabilização óptica (OIS) ajuda a evitar fotos tremidas e vídeos balançados, principalmente à noite.", w:"App Câmera"},
+  {n:"Ultra-wide e macro", d:"A lente de 8 MP com 120° pega cenas bem abertas e também serve para fotos de perto.", w:"App Câmera > ícone de lente / Macro"},
+  {n:"Modos de foto", d:"Retrato, Visão noturna e Panorama, entre outros. Os nomes dos modos podem variar um pouco.", w:"App Câmera > deslize pelos modos"},
+  {n:"Vídeo", d:"Grava em Full HD com estabilização. Vale gravar com a lente principal para ter o melhor resultado.", w:"App Câmera > Vídeo"},
+  {n:"Câmera frontal de 16 MP", d:"Para selfies e chamadas de vídeo.", w:"App Câmera > alternar câmera"}
+ ]},
+ {cat:"Som", items:[
+  {n:"Alto-falantes estéreo e Dolby Atmos", d:"Som mais cheio para vídeos, jogos e música, sem precisar de fone.", w:"Configurações > Som e vibração > Dolby Atmos"},
+  {n:"Entrada P2 para fone", d:"Aceita fone com fio, sem adaptador.", w:"Na lateral inferior do aparelho"},
+  {n:"Bluetooth 5.1", d:"Conecta fones, caixas de som e o painel do carro com boa estabilidade.", w:"Configurações > Dispositivos conectados"}
+ ]},
+ {cat:"Conectividade e carregamento", items:[
+  {n:"5G", d:"Internet móvel mais rápida onde houver cobertura. Se o sinal oscilar, o 4G pode economizar bateria.", w:"Configurações > Rede e internet > Chips > Tipo de rede preferido"},
+  {n:"Dois chips", d:"Usa duas linhas ao mesmo tempo, por exemplo pessoal e trabalho.", w:"Configurações > Rede e internet > Chips"},
+  {n:"NFC", d:"Pagamento por aproximação e leitura de etiquetas NFC.", w:"Configurações > Dispositivos conectados > Preferências de conexão > NFC"},
+  {n:"Compartilhar internet", d:"Transforma o celular em roteador Wi-Fi para o notebook ou outro aparelho.", w:"Configurações > Rede e internet > Ponto de acesso e tethering"},
+  {n:"Carregamento rápido via USB-C", d:"Carrega a bateria de 5.000 mAh com o carregador original TurboPower.", w:"Porta USB-C na parte de baixo"}
+ ]},
+ {cat:"Segurança e privacidade", items:[
+  {n:"Leitor de digital na tela", d:"Desbloqueia com o dedo direto na tela.", w:"Configurações > Segurança e privacidade > Desbloqueio do dispositivo"},
+  {n:"Reconhecimento facial", d:"Desbloqueia olhando para a câmera frontal. A digital é mais segura.", w:"Configurações > Segurança e privacidade > Desbloqueio do dispositivo"},
+  {n:"Google Play Protect", d:"Verifica seus apps procurando programas maliciosos.", w:"Play Store > ícone do perfil > Play Protect"},
+  {n:"Encontre Meu Dispositivo", d:"Localiza, toca ou apaga o celular a distância se ele for perdido ou roubado.", w:"Configurações > Google > Encontre Meu Dispositivo"}
+ ]},
+ {cat:"Ready For", items:[
+  {n:"Celular na TV ou no monitor", d:"Mostra a tela do celular em uma tela maior para vídeos, fotos e apresentações.", w:"Configurações > Ready For (ou ícone nos controles rápidos)"},
+  {n:"Celular no PC com Windows", d:"Conecta o celular ao computador para usar apps e arquivos na tela grande.", w:"Configurações > Ready For"}
+ ]},
+ {cat:"Uso no dia a dia", items:[
+  {n:"Personalização", d:"Troca papel de parede, ícones, fontes, cores e sons do sistema.", w:"Configurações > Personalizar"},
+  {n:"Não perturbe e Bem-estar digital", d:"Silencia avisos em horários definidos e mostra quanto tempo você usa cada app.", w:"Configurações > Bem-estar digital e controles parentais"},
+  {n:"Gametime", d:"Painel para jogar sem interrupções: reduz avisos e dá atalhos durante o jogo.", w:"App Moto > Gametime"},
+  {n:"Controles rápidos", d:"Atalhos de Wi-Fi, Bluetooth, lanterna e mais, ao deslizar de cima para baixo.", w:"Deslize de cima para baixo na tela"}
+ ]}
+];
+
+var STEPS = [
+ {g:"Faça agora, leva uns 5 minutos", t:"Reinicie o celular", y:"Limpa a memória e fecha processos travados.", w:"Segure o botão liga/desliga > Reiniciar", i:"Médio"},
+ {g:"Faça agora, leva uns 5 minutos", t:"Atualize o sistema", y:"Traz correções de desempenho e de segurança.", w:"Configurações > Sistema > Atualização do sistema", i:"Alto"},
+ {g:"Faça agora, leva uns 5 minutos", t:"Atualize os apps", y:"Versões novas costumam corrigir lentidão e travamentos.", w:"Play Store > ícone do perfil > Gerenciar apps e dispositivo > Atualizações disponíveis", i:"Médio"},
+ {g:"Faça agora, leva uns 5 minutos", t:"Deixe pelo menos 15% do armazenamento livre", y:"Quando o armazenamento enche, o celular fica lento.", w:"Configurações > Armazenamento > Liberar espaço", i:"Alto"},
+ {g:"Faça agora, leva uns 5 minutos", t:"Desinstale ou desative apps que você não usa", y:"Menos apps rodando e sincronizando deixam o aparelho mais leve.", w:"Configurações > Apps > Ver todos os apps. Apps de fábrica não saem, mas dá para Desativar.", i:"Médio"},
+
+ {g:"Mais fluidez", t:"Mantenha a tela em 120 Hz", y:"Como sua bateria está ótima, vale deixar a tela fluida. Em 60 Hz o aparelho parece mais lento.", w:"Configurações > Tela > Taxa de atualização", i:"Médio"},
+ {g:"Mais fluidez", t:"Ative as opções do desenvolvedor", y:"É só um menu escondido, necessário para o próximo passo.", w:"Configurações > Sobre o telefone > toque 7 vezes em Número da versão", i:"Baixo"},
+ {g:"Mais fluidez", t:"Reduza as animações para 0,5x", y:"O celular parece bem mais rápido porque as trocas de tela ficam mais curtas.", w:"Configurações > Sistema > Opções do desenvolvedor > Escala de animação de janela, Escala de animação de transição e Escala de duração do Animator: escolha 0,5x nas três. Não mexa em outras opções desse menu.", i:"Alto"},
+ {g:"Mais fluidez", t:"Use papel de parede parado e poucos widgets", y:"Papéis de parede animados e muitos widgets gastam processador e bateria.", w:"Toque e segure na tela inicial > Papéis de parede", i:"Baixo"},
+ {g:"Mais fluidez", t:"Use o tema escuro", y:"Na tela pOLED ajuda a bateria e a vista.", w:"Configurações > Tela > Tema escuro", i:"Baixo"},
+
+ {g:"Segundo plano e bateria", t:"Ative a bateria adaptável", y:"O sistema aprende quais apps você usa e limita os que quase não abre.", w:"Configurações > Bateria > Bateria adaptável", i:"Médio"},
+ {g:"Segundo plano e bateria", t:"Revise apps que gastam muito em segundo plano", y:"Alguns apps ficam trabalhando sem você abrir. Restrinja só os que você raramente usa. Não restrinja WhatsApp e apps de aviso importante.", w:"Configurações > Bateria > Uso da bateria, ou Configurações > Apps > (app) > Bateria", i:"Alto"},
+ {g:"Segundo plano e bateria", t:"Desligue a sincronização de contas que você não usa", y:"Menos contas sincronizando ao mesmo tempo, menos trabalho para o aparelho.", w:"Configurações > Senhas e contas", i:"Baixo"},
+
+ {g:"Apps pesados", t:"Limpe o cache dos apps mais pesados", y:"Instagram, Facebook, TikTok e Chrome acumulam cache. Limpe só o cache, nunca os dados, para não perder seu login.", w:"Configurações > Apps > (app) > Armazenamento e cache > Limpar cache", i:"Médio"},
+ {g:"Apps pesados", t:"Apague mídia pesada do WhatsApp", y:"Vídeos e figurinhas antigos ocupam muito espaço.", w:"WhatsApp > Configurações > Armazenamento e dados > Gerenciar armazenamento", i:"Médio"},
+
+ {g:"Jogos e rede", t:"Use o Gametime ao jogar", y:"Reduz avisos durante a partida e oferece atalhos de jogo.", w:"App Moto > Gametime", i:"Médio"},
+ {g:"Jogos e rede", t:"Escolha o tipo de rede certo", y:"Se o sinal 5G oscila no seu bairro, o aparelho gasta bateria procurando rede. Teste 4G se isso acontecer.", w:"Configurações > Rede e internet > Chips > Tipo de rede preferido", i:"Médio"},
+
+ {g:"Segurança e manutenção", t:"Rode a verificação do Play Protect", y:"Apps maliciosos deixam o celular lento e podem roubar dados.", w:"Play Store > ícone do perfil > Play Protect > Analisar", i:"Médio"},
+ {g:"Segurança e manutenção", t:"Confira seu backup", y:"Faça antes de qualquer limpeza grande ou de uma redefinição.", w:"Configurações > Sistema > Backup", i:"Alto"},
+ {g:"Segurança e manutenção", t:"Último recurso: restaurar o celular de fábrica", y:"Só se ele continuar lento depois de tudo isso. Apaga tudo, então faça o backup antes.", w:"Configurações > Sistema > Opções de redefinição > Apagar todos os dados", i:"Alto"}
+];
+
+var ROTINA = [
+  ["Toda semana","Reinicie o celular e limpe o cache dos apps mais pesados."],
+  ["Todo mês","Apague mídia do WhatsApp, revise os apps instalados e veja se há atualização do sistema."],
+  ["A cada 3 meses","Rode o Play Protect, confira o armazenamento livre e veja os apps que mais gastam bateria."]
+];
+var EVITAR = [
+  ["Apps que prometem acelerar ou limpar a memória","Eles costumam consumir mais do que ajudam e podem trazer anúncios ou vírus."],
+  ["Fechar todos os apps toda hora","O Android gerencia a memória sozinho. Reabrir um app do zero gasta mais bateria."],
+  ["Deixar o armazenamento quase cheio","É a causa mais comum de lentidão."],
+  ["Limpar dados em vez de cache","Limpar dados apaga login e configurações do app. Limpar cache é seguro."]
+];
+
+/* ---------- Armazenamento seguro ---------- */
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+/* ---------- Tema ---------- */
+var root = document.documentElement;
+var savedTheme = lsGet("g84-theme");
+if(savedTheme){ root.setAttribute("data-theme", savedTheme); }
+document.getElementById("themeBtn").addEventListener("click", function(){
+  var cur = root.getAttribute("data-theme");
+  if(!cur){ cur = (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light"; }
+  var next = cur === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  lsSet("g84-theme", next);
+});
+
+/* ---------- Abas ---------- */
+var tabs = document.querySelectorAll("nav.tabs button");
+function showTab(name){
+  ["ficha","funcoes","desempenho"].forEach(function(n){
+    document.getElementById("tab-"+n).hidden = (n !== name);
+  });
+  tabs.forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-tab") === name ? "true" : "false"); });
+  lsSet("g84-tab", name);
+  window.scrollTo(0,0);
+}
+tabs.forEach(function(b){ b.addEventListener("click", function(){ showTab(b.getAttribute("data-tab")); }); });
+document.querySelectorAll("[data-go]").forEach(function(b){ b.addEventListener("click", function(){ showTab(b.getAttribute("data-go")); }); });
+
+/* ---------- Ficha ---------- */
+document.getElementById("specs").innerHTML = SPECS.map(function(r){
+  return '<div class="row"><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>';
+}).join("");
+
+/* ---------- Funções ---------- */
+function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+function renderFeatures(q){
+  var nq = norm(q || ""), total = 0, html = "";
+  FEATURES.forEach(function(c){
+    var items = c.items.filter(function(f){
+      return !nq || norm(f.n+" "+f.d+" "+f.w+" "+c.cat).indexOf(nq) > -1;
+    });
+    if(!items.length) return;
+    total += items.length;
+    html += '<h4 class="cat">'+c.cat+'</h4>' + items.map(function(f){
+      return '<details class="f"'+(nq?' open':'')+'><summary>'+f.n+'</summary><div class="body"><p>'+f.d+'</p><span class="where">Onde: '+f.w+'</span></div></details>';
+    }).join("");
+  });
+  document.getElementById("feat").innerHTML = html || '<p class="empty">Nenhuma função encontrada. Tente outra palavra.</p>';
+  document.getElementById("count").textContent = total + (total === 1 ? " função" : " funções");
+}
+document.getElementById("q").addEventListener("input", function(e){ renderFeatures(e.target.value); });
+renderFeatures("");
+
+/* ---------- Desempenho ---------- */
+var done = {};
+try{ done = JSON.parse(lsGet("g84-done") || "{}") || {}; }catch(e){ done = {}; }
+var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+function impClass(i){ return i === "Alto" ? "alto" : (i === "Médio" ? "medio" : "baixo"); }
+
+function renderSteps(){
+  var html = "", lastG = "";
+  STEPS.forEach(function(s, idx){
+    if(s.g !== lastG){ html += '<h4 class="cat">'+s.g+'</h4>'; lastG = s.g; }
+    var on = !!done[idx];
+    html += '<div class="step'+(on?' done':'')+'" data-i="'+idx+'">'
+      + '<button class="chk" type="button" role="checkbox" aria-checked="'+on+'" aria-label="Marcar passo '+(idx+1)+'">'+CHECK+'</button>'
+      + '<div class="c"><h4>'+(idx+1)+'. '+s.t+'<span class="chip '+impClass(s.i)+'">'+s.i+'</span></h4>'
+      + '<p>'+s.y+'</p><span class="where">Onde: '+s.w+'</span></div></div>';
+  });
+  document.getElementById("steps").innerHTML = html;
+  updateProgress();
+}
+function updateProgress(){
+  var n = STEPS.reduce(function(a,_,i){ return a + (done[i] ? 1 : 0); }, 0), t = STEPS.length;
+  var pct = t ? n/t : 0;
+  document.getElementById("barFill").style.width = (pct*100)+"%";
+  document.getElementById("barLbl").textContent = n + " de " + t + " passos feitos";
+  document.getElementById("ringNum").textContent = n;
+  document.getElementById("ringOf").textContent = "de " + t;
+  document.getElementById("ringFg").style.strokeDashoffset = (213.63 * (1 - pct)).toFixed(2);
+}
+document.getElementById("steps").addEventListener("click", function(e){
+  var btn = e.target.closest(".chk"); if(!btn) return;
+  var card = btn.closest(".step"), i = card.getAttribute("data-i");
+  done[i] = !done[i];
+  lsSet("g84-done", JSON.stringify(done));
+  card.classList.toggle("done", !!done[i]);
+  btn.setAttribute("aria-checked", String(!!done[i]));
+  updateProgress();
+});
+document.getElementById("resetBtn").addEventListener("click", function(){
+  done = {}; lsSet("g84-done", "{}"); renderSteps();
+});
+renderSteps();
+
+document.getElementById("rotina").innerHTML = ROTINA.map(function(r){
+  return '<div class="rot"><h4>'+r[0]+'</h4><p>'+r[1]+'</p></div>';
+}).join("");
+document.getElementById("evitar").innerHTML = EVITAR.map(function(r){
+  return '<div class="rot"><h4>'+r[0]+'</h4><p>'+r[1]+'</p></div>';
+}).join("");
+
+/* ---------- Início ---------- */
+var st = lsGet("g84-tab");
+if(st && ["ficha","funcoes","desempenho"].indexOf(st) > -1){ showTab(st); }
+</script>
+</body>
+</html>
